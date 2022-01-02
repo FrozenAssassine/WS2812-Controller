@@ -1,6 +1,8 @@
 #define NumberOfPixels 12 //Set the number of leds
 #define OutputPort PINB0
+
 #define F_CPU 8000000 //Set the clockspeed
+
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdbool.h>
