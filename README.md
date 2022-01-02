@@ -1,7 +1,7 @@
 # WS2812-Controller
 A library to control the Ws2812 with an AVR-device
 
-### to use in Microchip Studio:
+### How to use in Microchip Studio:
 - Create a new C++ Executable project
 - Select the device you wanna use
 - Add the library to your project:
@@ -12,7 +12,7 @@ A library to control the Ws2812 with an AVR-device
    
 - Now In your project you can try following samplecode:
 
-```js
+```cpp
 #define NumberOfPixels 12 //Set the number of leds
 #define F_CPU 8000000 //Set the clockspeed
 #include <avr/io.h>
@@ -33,3 +33,13 @@ int main(void)
 }
 ```
 
+## Functions:
+```cpp
+LedIsOff(uint16_t index) //returns whether led is on or off
+ShowPixel() //Shows all previously set led's
+SetPixelColor(uint16_t index, uint32_t color) //SEt the color of the pixel which is indicated by index to a 32bit intager
+SetPixelColor(uint16_t index, uint8_t red, uint8_t green, uint8_t blue) //Set the color of the pixel which is indicated by index to 3 8bit values
+SetPixelColor(uint16_t index, uint16_t count, uint8_t red, uint8_t green, uint8_t blue) //Change "count" pixels from index
+InitialiseStrip() //Initialise the strip => set all leds to off
+GetLedCount() //Returns the number of leds
+``` 
