@@ -25,31 +25,31 @@ private:
 	LedItem leditems[NumberOfPixels];
 
 	void TimeLed (uint8_t z) {
-	switch (z){
-		
-		case 0:{
-			PORTB |= (1<<OutputPort);
-			_delay_us(0.12);
-			PORTB &= ~(1<<OutputPort);
-			_delay_us(0.52); //0.12 + 0.52
-			break;
-		}
-		case 1:{
-			PORTB |= (1<<OutputPort);
-			_delay_us(0.7);
-			PORTB &= ~(1<<OutputPort);
-			_delay_us(0.2); //0.7 + 0.2
-			break;
+		switch (z){
+
+			case 0:{
+				PORTB |= (1<<OutputPort);
+				_delay_us(0.12);
+				PORTB &= ~(1<<OutputPort);
+				_delay_us(0.52); //0.12 + 0.52
+				break;
+			}
+			case 1:{
+				PORTB |= (1<<OutputPort);
+				_delay_us(0.7);
+				PORTB &= ~(1<<OutputPort);
+				_delay_us(0.2); //0.7 + 0.2
+				break;
+			}
 		}
 	}
-}
 	bool LedIsOff(uint16_t index){
 		if(index >= ArraySize(leditems))
-		return true;
+			return true;
 		
 		return leditems[index].blue == 0 &&
-		leditems[index].green == 0 &&
-		leditems[index].red== 0;
+			leditems[index].green == 0 &&
+			leditems[index].red== 0;
 	}
 	void DoTimeLed(uint16_t index){
 		for (uint8_t bit = 8; bit > 0; --bit)
@@ -118,9 +118,9 @@ public:
 		for (uint8_t i = 0; i < ArraySize(leditems); i++) {
 			leditems[i].red = leditems[i].green = leditems[i].blue = 0;
 		}
-  }
-uint16_t GetLedCount(){
-	return ArraySize(leditems);
-}
+  	}
+	uint16_t GetLedCount(){
+		return ArraySize(leditems);
+	}
 };
 #endif /* WS2812_H_ */
