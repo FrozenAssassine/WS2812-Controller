@@ -1,2 +1,35 @@
 # WS2812-Controller
-A code to control the Ws2812b with an AVR-device
+A library to control the Ws2812 with an AVR-device
+
+### to use in Microchip Studio:
+- Create a new C++ Executable project
+- Select the device you wanna use
+- Add the library to your project:
+  ###### Option 1:
+  Import the library to your project by rightclicking on your project in Solutionexplorer (Ctrl + Alt + L) -> there you click on Add -> Existing Item. Now locate the WS2812.h file on your pc.
+  ###### Option 2:
+  You can also put the file to the other inbuild header librarys by navigating to "C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\" there you can paste the WS2812.h file.
+   
+- Now In your project you can try following samplecode:
+
+```js
+#define NumberOfPixels 12 //Set the number of leds
+#define F_CPU 8000000 //Set the clockspeed
+#include <avr/io.h>
+#include <util/delay.h>
+#include <stdbool.h>
+#include <WS2812.h> //include the libary
+
+int main(void)
+{
+  DDRB = 0b00000001; //Define the output
+
+  InitialiseStrip();
+
+  SetPixelColor(11, 255, 0, 0); //Set color of pixel 11 to red
+  SetPixelColor(3, 5 255, 255, 0); //Set color of pixel 3 to 8 green
+  SetPixelColor(5, 65025); //Set color as 32bit value: for example 65025 for green
+  ShowPixel(); //Call to actually display the changes
+}
+```
+
