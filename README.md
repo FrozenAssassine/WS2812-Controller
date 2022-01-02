@@ -14,6 +14,7 @@ A library to control the Ws2812 with an AVR-device
 
 ```cpp
 #define NumberOfPixels 12 //Set the number of leds
+#define OutputPort PINB0 //Set the port where the ledstrip is connected to
 #define F_CPU 8000000 //Set the clockspeed
 #include <avr/io.h>
 #include <util/delay.h>
@@ -22,7 +23,7 @@ A library to control the Ws2812 with an AVR-device
 
 int main(void)
 {
-  DDRB = 0b00000001; //Define the output
+  DDRB = 0b00000001; //Set the ouputpin to high
 
   InitialiseStrip();
 
