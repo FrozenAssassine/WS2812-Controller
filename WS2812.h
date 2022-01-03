@@ -44,7 +44,7 @@ private:
 		}
 	}
 	bool LedIsOff(uint16_t index){
-		if(index >= ArraySize(leditems))
+		if(index > ArraySize(leditems))
 			return true;
 		
 		return leditems[index].blue == 0 &&
@@ -86,7 +86,7 @@ public:
 	}
 	void SetPixelColor(uint16_t index, uint32_t color)
 	{
-		if(index >= ArraySize(leditems))
+		if(index > ArraySize(leditems))
 		return;
 	
 		leditems[index].red = (color & 0xff0000) >> 16;
@@ -95,7 +95,7 @@ public:
 	}
 	void SetPixelColor(uint16_t index, uint8_t red, uint8_t green, uint8_t blue)
 	{
-		if(index >= ArraySize(leditems))
+		if(index > ArraySize(leditems))
 		return;
 	
 		leditems[index].red = red;
@@ -104,7 +104,7 @@ public:
 	}
 	void SetPixelColor(uint16_t index, uint16_t count, uint8_t red, uint8_t green, uint8_t blue)
 	{
-		if(index + count >= ArraySize(leditems))
+		if(index + count > ArraySize(leditems))
 			return;
 	
 		for(uint16_t i = index; i<index + count; i++){
