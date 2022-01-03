@@ -21,14 +21,14 @@ A library to control the Ws2812 with an AVR-device
 
 int main(void)
 {
-	DDRB = 0b00000001;
+	DDRB = 0b00000001; //Set PINB0 as output
 	Strip strip; //Create an instance of the Strip class
-	strip.InitialiseStrip();
+	strip.InitialiseStrip(); //Turn all leds off
 	
-	strip.SetPixelColor(0, 255,0,0);
-	strip.SetPixelColor(1, 0,255,0);
-	strip.SetPixelColor(2, 0,0,255);
-	strip.ShowPixel();
+	strip.SetPixelColor(0, 255,0,0); //Set the color of led one to red
+	strip.SetPixelColor(1, 0,255,0); //Set the color of led two to green
+	strip.SetPixelColor(2, 0,0,255); //Set the color of led three to blue
+	strip.ShowPixel(); //Send the colors to the strip
 }
 ```
 #### After uploaded to your AVR the first three leds should light up in red, green and blue.
