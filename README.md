@@ -14,7 +14,7 @@ A library to control the Ws2812 with an AVR-device
 
 ```cpp
 #define NumberOfPixels 12 //Set the number of leds
-#define OutputPort PINB0
+#define OutputPort PINB0 //Define the outputport
 
 #define F_CPU 8000000 //Set the clockspeed
 
