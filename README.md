@@ -41,9 +41,9 @@ int main(void)
 ```cpp
 LedIsOff(uint16_t index) //returns whether led is on or off
 ShowPixel() //Shows all previously set led's
-SetPixelColor(uint16_t index, uint32_t color) //Set the color of the pixel which is indicated by index to a 32bit intager
-SetPixelColor(uint16_t index, uint8_t red, uint8_t green, uint8_t blue) //Set the color of the pixel which is indicated by index to 3 8bit values
-SetPixelColor(uint16_t index, uint16_t count, uint8_t red, uint8_t green, uint8_t blue) //Change "count" pixels from index
-InitialiseStrip() //Initialise the strip => set all leds to off
+SetPixelColor(uint16_t index, uint32_t color) //Set the color of the pixel which is indicated by index to a 32bit integer
+SetPixelColor(uint16_t index, uint8_t red, uint8_t green, uint8_t blue) //Set the color of the pixel which is indicated by index to tree 8bit values
+SetPixelColor(uint16_t index, uint16_t count, uint8_t red, uint8_t green, uint8_t blue) //Set the color of pixels, indicated by count, starting by index
+InitialiseStrip() //Initialise the strip => Set all leds to off
 GetLedCount() //Returns the number of leds
 ``` 
