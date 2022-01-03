@@ -1,23 +1,20 @@
-#define NumberOfPixels 12 //Set the number of leds
-#define OutputPort PINB0
-
-#define F_CPU 8000000 //Set the clockspeed
-
+#define F_CPU 8000000
 #include <avr/io.h>
 #include <util/delay.h>
-#include <stdbool.h>
-#include <WS2812.h> //include the libary
+
+//!Important: define Number of Pixels and OutputPin before including "WS2812.h"
+#define NumberOfPixels 12
+#define OutputPin PINB0
+#include "WS2812.h"
 
 int main(void)
 {
-	DDRB = 0b00000001; //Define the output
-	Strip strip;
-
-	strip.InitialiseStrip();
-
-	strip.SetPixelColor(11, 255, 0, 0); //Set color of pixel 11 to red
-	strip.SetPixelColor(3, 5 255, 255, 0); //Set color of pixel 3 to 8 green
-	strip.SetPixelColor(5, 65025); //Set color as 32bit value: for example 65025 for green
-	strip.ShowPixel(); //Call to actually display the changes
-}
+	DDRB = 0b00000001; //Set PINB0 as output
+	Strip strip; //Create an instance of the Strip class
+	strip.InitialiseStrip(); //Turn all leds off
 	
+	strip.SetPixelColor(0, 255,0,0); //Set the color of led one to red
+	strip.SetPixelColor(1, 0,255,0); //Set the color of led two to green
+	strip.SetPixelColor(2, 0,0,255); //Set the color of led three to blue
+	strip.ShowPixel(); //Send the colors to the strip
+}
