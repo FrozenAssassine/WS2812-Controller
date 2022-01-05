@@ -4,9 +4,7 @@ A library to control the Ws2812 with an AVR-device
 ### How to use in Microchip Studio:
 - Create a new C++ Executable project
 - Select the device you wanna use
-- Add the library to your project:
- 
-	Import the library to your project by rightclicking on your project in Solutionexplorer (Ctrl + Alt + L) -> there you click on Add -> Existing Item. Now locate the WS2812.h file on your pc.
+- To add the library to your project, rightclicking on your project in Solutionexplorer (Ctrl + Alt + L) -> Add -> Existing Item. Now locate the WS2812.h file on your pc.
    
 - To test it you can try following samplecode:
 ```cpp
