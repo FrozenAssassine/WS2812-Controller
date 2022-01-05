@@ -6,7 +6,7 @@ A library to control the Ws2812 with an AVR-device
 - Select the device you wanna use
 - To add the library to your project, rightclicking on your project in Solutionexplorer (Ctrl + Alt + L) -> Add -> Existing Item. Now locate the WS2812.h file on your pc.
    
-- To test it you can try following samplecode:
+- To try it you can try following samplecode:
 ```cpp
 #define F_CPU 8000000
 #include <avr/io.h>
