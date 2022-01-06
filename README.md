@@ -40,6 +40,7 @@ SetPixelColor(uint16_t index, uint32_t color) //Set the color of the pixel which
 SetPixelColor(uint16_t index, uint8_t red, uint8_t green, uint8_t blue) //Set the color of the pixel which is indicated by index to three 8bit values
 SetPixelColor(uint16_t index, uint16_t count, uint8_t red, uint8_t green, uint8_t blue) //Set the color of pixels, indicated by count, starting by index to a rgb value.
 SetPixelColor(uint16_t index, uint16_t count, uint32_t color) // //Set the color of pixels, indicated by count, starting by index to a 32bit integer
+LedsOff() //Turns all leds off
 InitialiseStrip() //Initialise the strip => Set all leds to off
 GetLedCount() //Returns the number of leds
 ``` 
