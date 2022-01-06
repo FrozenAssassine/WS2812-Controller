@@ -137,5 +137,15 @@ public:
 	{
 		return ArraySize(leditems);
 	}
+	
+	void LedsOff()
+	{
+		for(uint16_t i= 0; i<ArraySize(leditems); i++)
+		{
+			SetColor(i,0,0,0);
+		}
+		ShowPixel();
+	}
+
 };
 #endif /* WS2812_H_ */
