@@ -1,5 +1,5 @@
 # WS2812-Controller
-A library to control the Ws2812 with an AVR-device
+A library to control the WS2812-RGB led with an AVR-device
 
 ### How to use in Microchip Studio:
 - Create a new C++ Executable project
