@@ -48,31 +48,34 @@ private:
 	bool LedIsOff_Intern(uint16_t index){
 		return leditems[index].red == 0 && leditems[index].green == 0 && leditems[index].blue == 0;
 	}
-	void DoTimeLed(uint16_t index)
+	void DoTimeLed(uint16_t index) 
 	{
+		uint8_t red = leditems[index].red;
+		uint8_t green = leditems[index].green;
+		uint8_t blue = leditems[index].blue;
+		if(red>MaxBrightness)
+			red=MaxBrightness;
+		if(green>MaxBrightness)
+			green=MaxBrightness;		
+		if(blue>MaxBrightness)
+			blue=MaxBrightness;
+			
 		for (uint8_t bit = 8; bit > 0; --bit)
 		{
-			TimeLed((leditems[index].green >> (bit-1)) & 1);
+			TimeLed((green >> (bit-1)) & 1);
 		}
 		for (uint8_t bit = 8; bit > 0; --bit)
 		{
-			TimeLed((leditems[index].red >> (bit-1)) & 1);
+			TimeLed((red >> (bit-1)) & 1);
 		}
 		for (uint8_t bit = 8; bit > 0; --bit)
 		{
-			TimeLed((leditems[index].blue >> (bit-1)) & 1);
+			TimeLed((blue >> (bit-1)) & 1);
 		}
 	}
 
 	void SetColor(uint16_t index, uint8_t red, uint8_t green, uint8_t blue)
 	{
-		if(red>MaxBrightness)
-			red= MaxBrightness;
-		if(green >MaxBrightness)
-			green = MaxBrightness;
-		if(blue>MaxBrightness)
-			blue = MaxBrightness;
-			
 		leditems[index].red = red;
 		leditems[index].green = green;
 		leditems[index].blue = blue;
@@ -170,4 +173,3 @@ public:
 		return ArraySize(leditems);
 	}
 };
-#endif /* WS2812_H_ */
