@@ -32,7 +32,7 @@ int main(void)
 #### After uploaded to your AVR the first three leds should light up in red, green and blue.
 
 
-## Functions:
+## Functions: 
 ```cpp
 LedIsOff(5) //returns whether led number 5 is on or off
 ShowPixel() //Shows all previously set led's
