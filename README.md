@@ -45,3 +45,5 @@ SetMaxBrightness(150) //Sets the maximum Brightness of the strip to 150. From 0-
 InitialiseStrip() //Initialise the strip => Set all leds to off
 GetLedCount() //Returns the number of leds
 ``` 
+
+<img src="images/rgb.jpg" align="center">
