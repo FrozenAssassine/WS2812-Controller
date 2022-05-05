@@ -4,9 +4,9 @@ A library to control the WS2812-RGB led with an AVR-device
 ### How to use in Microchip Studio:
 - Create a new C++ Executable project
 - Select the chip you wanna use
-- To add the library to your project, rightclicking on your project in Solutionexplorer (Ctrl + Alt + L) -> Add -> Existing Item. Now locate the WS2812.h file on your pc.
+- To add the library to your project, rightclick on your project in Solutionexplorer (Ctrl + Alt + L) -> Add -> Existing Item. Now locate the WS2812.h file on your pc.
    
-- To test it you can use following samplecode:
+- To test if it works, you can use following samplecode:
 ```cpp
 #define F_CPU 8000000
 #include <avr/io.h>
