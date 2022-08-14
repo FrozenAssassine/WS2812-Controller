@@ -174,6 +174,7 @@ public:
 			}
 			_delay_us(50);
 		}
+		ShowPixel();
 	}
 	uint16_t GetLedCount()
 	{
