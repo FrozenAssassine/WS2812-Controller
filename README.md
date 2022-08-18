@@ -41,7 +41,7 @@ LedsOff() //Turn all leds off
 SetMaxBrightness(150) //Sets the maximum Brightness of the strip to 150. From 0-255
 InitialiseStrip() //Initialise the strip => Set all leds to off
 GetLedCount() //Returns the number of leds you set on start | numberOfPixels does the same
-Map(value, value_min, value_max, out_min, out_max) Map a value from min max to min max 
+Map(value, value_min, value_max, out_min, out_max) //Map a value from min max to min max 
 ``` 
 ## This is how it could look like
 <img src="images/rgb.jpg" width="80%" height="auto">
