@@ -11,12 +11,17 @@ A library to control the WS2812-RGB led with an AVR-device
 #define F_CPU 8000000
 #include <avr/io.h>
 #include <util/delay.h>
+
+//define output pin and port
+#define RGB_OutputPort PORTB
+#define RGB_OutputPin PINB0
+//includ the header
 #include "WS2812.h"
 
 int main(void)
 {
 	DDRB = 0b00000001; //Set PINB0 as output
-	Strip strip = Strip(12, PORTB, PINB0); //Set the number of pixels and the Port + Pin where your strip is connected to
+	Strip strip = Strip(12); //Set the number of pixels
 	strip.InitialiseStrip(); //Turn all leds off
 	
 	strip.SetPixelColor(0, 255,0,0); //Set the color of led one to red
@@ -32,7 +37,7 @@ int main(void)
 ```cpp
 LedIsOff(5) //returns whether led number 5 is on or off
 ShowPixel() //Shows all previously set led's
-SetPixelColor(2, 65280) //Set the color of pixel 2 to green
+SetPixelColor(2, 65280) //Set the color using a 32bit integer value
 SetPixelColor(4, 255, 0, 0) //Set the color of the pixel 4 to red
 SetPixelColor(3, 7, 0, 0, 255) //Set the color from pixel 3 to pixel 10 to blue.
 SetPixelColor(1, 5, 16711680) // //Set the color from pixel 1 to pixel 6 red.
@@ -41,7 +46,11 @@ LedsOff() //Turn all leds off
 SetMaxBrightness(150) //Sets the maximum Brightness of the strip to 150. From 0-255
 InitialiseStrip() //Initialise the strip => Set all leds to off
 GetLedCount() //Returns the number of leds you set on start | numberOfPixels does the same
-Map(value, value_min, value_max, out_min, out_max) //Map a value from min max to min max 
+Map(value, value_min, value_max, out_min, out_max) //Map a value from min max to min max
+GetPixelColor(index) //returns a 32bit integer with the color
+GetPixelRed(index) //returns an 8bit integer representing the brightness of red
+GetPixelGreen(index) //returns an 8bit integer representing the brightness of green
+GetPixelBlue(index) //returns an 8bit integer representing the brightness of blue
 ``` 
 ## This is how it could look like
 <img src="images/rgb.jpg" width="80%" height="auto">
