@@ -1,16 +1,18 @@
 #define F_CPU 8000000 //For Attiny 85
 #include <avr/io.h>
 #include <util/delay.h>
+
+#define RGB_OutputPort PORTB
+#define RGB_OutputPin PINB0
+
 #include "WS2812.h"
 
 int main(void)
 {
 	DDRB = 0b00000001; //Set PINB0 as output
 	
-	//Create an instance of the Strip class:
-	//Set the pixelcount to 12
-	//Set the Output to PORTB->PINB0
-	Strip strip = Strip(12, PORTB, PINB0);
+	//Create an instance of the Strip class with 12 pixel:
+	Strip strip = Strip(12);
 	
 	strip.InitialiseStrip(); //Turn all leds off
 	strip.SetMaxBrightness(255);
