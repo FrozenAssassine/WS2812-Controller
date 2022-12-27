@@ -2,16 +2,16 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-//!!!Important: define Number of Pixels and OutputPin before including "WS2812.h"!!!
-#define NumberOfPixels 12
-#define OutputPin PINB0
+#define RGB_OutputPort PORTB
+#define RGB_OutputPin PINB0
+
 #include "WS2812.h"
 
 int main(void)
 {
 	DDRB = 0b00000001;
 	Strip strip; //Create an instance of the Strip class
-	strip.InitialiseStrip();
+	strip.InitialiseStrip(12);
 
 	while (true){
 		strip.SetPixelColor(0,12,255,0,0);
