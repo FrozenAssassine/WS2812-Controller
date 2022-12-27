@@ -12,6 +12,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define COLOR_RGB 0
+#define COLOR_GRB 1
+
 typedef struct leditem
 {
 	uint8_t red;
@@ -21,28 +24,29 @@ typedef struct leditem
 
 class Strip{
 
-//All private methodes:
+//All private functions:
 private:
-	int outputPort = 0;
-	int outputPin = 0;
+
 	uint8_t maxBrightness = 255;
-
+	uint8_t colorMode;
+	
+	//LedItem * leditems;
 	LedItem * leditems;
-
+	
 	void TimeLed (uint8_t z) {
 		switch (z){
 			
 			case 0:{
-				PORTB |= (1<<PINB2);
+				RGB_OutputPort |= (1<<RGB_OutputPin);
 				_delay_us(0.12);
-				PORTB &= ~(1<<PINB2);
+				RGB_OutputPort &=~ (1<<RGB_OutputPin);
 				_delay_us(0.52); //0.12 + 0.52
 				break;
 			}
 			case 1:{
-				PORTB |= (1<<PINB2);
+				RGB_OutputPort |= (1<<RGB_OutputPin);
 				_delay_us(0.7);
-				PORTB &= ~(1<<PINB2);
+				RGB_OutputPort &=~ (1<<RGB_OutputPin);
 				_delay_us(0.2); //0.7 + 0.2
 				break;
 			}
@@ -78,22 +82,27 @@ private:
 	}
 	void SetColor(uint16_t index, uint8_t red, uint8_t green, uint8_t blue)
 	{
-		leditems[index].red = red;
-		leditems[index].green = green;
+		if(colorMode == COLOR_RGB){
+			leditems[index].red = red;
+			leditems[index].green = green;
+		}
+		else{ //GRB		
+			leditems[index].red = green;
+			leditems[index].green = red;
+		}
+		
 		leditems[index].blue = blue;
 	}
 	
-//All public methodes:
+//All public functions:
 public:
-	uint16_t numberOfPixels = 0;
+	uint16_t numberOfPixels;
 
-	Strip(int nbrOfPixels, int OutputStripPort, int OutputStripPin)
+	Strip(int nbrOfPixels, int colorMode = 0)
 	{
-		leditems = (LedItem*)malloc(nbrOfPixels);
+		this->colorMode = colorMode;
 		numberOfPixels = nbrOfPixels;
-		outputPin = OutputStripPin;
-		outputPort = OutputStripPort;
-	
+		leditems = (LedItem*)malloc(nbrOfPixels);
 	}
 
 	bool LedIsOff(uint16_t index){
@@ -107,13 +116,13 @@ public:
 		for(uint16_t led = 0; led < numberOfPixels; led++)
 		{
 			//If led doesn't have any value, send zero without converting:
-			//if(LedIsOff_Intern(led)) {
-			//	for(uint8_t i = 0; i<24;i++) { TimeLed(0);}
-			//}
+			if(LedIsOff_Intern(led)) {
+				for(uint8_t i = 0; i<24;i++) { TimeLed(0);}
+			}
 			//If led has a value, calculate and send it:
-			//else {
+			else {
 				DoTimeLed(led);
-			//}
+			}
 			_delay_us(20);
 		}
 		_delay_us(30);
@@ -230,5 +239,29 @@ public:
 		return ((((((r * s1) >> 8) + s2) * v1) & 0xff00) << 8) |
 		(((((g * s1) >> 8) + s2) * v1) & 0xff00) |
 		(((((b * s1) >> 8) + s2) * v1) >> 8);
+	}
+	uint32_t GetPixelColor(uint16_t index)
+	{
+		if(index > numberOfPixels)
+			return 0;		
+		return ((leditems[index].red << 8) | leditems[index].green) << 8 | leditems[index].blue;
+	}
+	uint8_t GetPixelRed(uint16_t index)
+	{
+		if(index > numberOfPixels)
+			return 0;
+		return leditems[index].red;
+	}
+	uint8_t GetPixelGreen(uint16_t index)
+	{
+		if(index > numberOfPixels)
+			return 0;
+		return leditems[index].green;
+	}
+	uint8_t GetPixelBlue(uint16_t index)
+	{
+		if(index > numberOfPixels)
+			return 0;
+		return leditems[index].blue;
 	}
 };
