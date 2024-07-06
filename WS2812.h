@@ -102,7 +102,7 @@ public:
 	{
 		this->colorMode = colorMode;
 		numberOfPixels = nbrOfPixels;
-		leditems = (LedItem*)malloc(nbrOfPixels);
+		leditems = (LedItem*)malloc(nbrOfPixels*sizeof(LedItem));
 	}
 
 	bool LedIsOff(uint16_t index){
